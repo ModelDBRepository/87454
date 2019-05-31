@@ -1,0 +1,77 @@
+//Andreas Bahmer 25.1.06
+
+objref icur
+icur = new Vector (50, 100)
+ncur = 20 // normal number of current steps
+variable_domain(&ncur, 1, 50)
+
+imax = 130
+
+objref w  // window, run control and plot window
+objref rect, recv, reci, tempmatrix
+rect = new Vector()
+recv = new Vector()
+reci = new Vector()
+tempmatrix = new Matrix()
+recv.record(&Ro_Cell[0].soma.v(0.5))
+rect.record(&t)
+	
+
+proc runhere(){
+	for i=0,ncur-1 {
+	icur.x[i] = i*imax/(ncur-1)
+	IClamp[0].amp=icur.x[i]/1000
+	IClamp[1].amp= icur.x[i]/1000
+	run()
+	tempmatrix.resize(ncur+1,rect.size()+1)
+	tempmatrix.setrow(i+1,recv )
+	tempmatrix.x[i+1][rect.size()]=icur.x(i)
+	}
+	tempmatrix.setrow(0,rect )
+		}
+//	 	for i = 0,ncur-1 {
+//		 			icur.x[i] = i*imax/(ncur-1)
+//					}
+//		tstop = 100
+//		for i = 0,ncur-1 {
+//					v=-65
+//					finitialize(v)
+//					fcurrent()
+//					t=0
+//					while (t<tstop*1.5) { 	// go past end of pulses
+//								    fadvance()
+//								   }
+//					doNotify()
+//					ic.amp=0
+//					tempmatrix.resize(ncur+1,rect.size()+1)
+//					tempmatrix.setrow(i+1,recv )
+//					tempmatrix.x[i+1][rect.size()]=icur.x(i)
+//					}
+//		tempmatrix.setrow(0,rect ) 
+//		}
+
+objref savdata
+savdata = new File()
+
+proc matrix() {
+n=tempmatrix.ncol
+m=tempmatrix.nrow
+savdata.wopen("rothman.txt")
+tempmatrix.fprint(savdata, " %g")
+savdata.close()
+}
+
+w = new HBox()
+w.intercept(1)
+xpanel("")
+
+xbutton("Run  ", "runhere()")
+xbutton("save matrix", "matrix()")
+xvalue("IV max (pA)", "imax", 130)
+xvalue("# IV steps", "ncur", 20)
+
+xpanel()
+w.intercept(0)
+
+w.map("Andreas Bahmer 06",400,50,200,200)
+
