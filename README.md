@@ -64,21 +64,20 @@ In my simulations, I have simulated the nerve and onset neuron with many repetit
 
 ---
 
-Dr. Andreas Bahmer
-Dr.rer.nat. Dipl.-Phys. cand. med.
-Klinikum der Johann Wolfgang Goethe Universität
-Klinik für Hals-Nasen-Ohrenheilkunde
-Audiologische Akustik, Prof. Dr.-Ing. Uwe Baumann
-Theodor-Stern-Kai 7, 60590 Frankfurt am Main
+Dr. Andreas Bahmer  
+Dr.rer.nat. Dipl.-Phys. cand. med.  
+Klinikum der Johann Wolfgang Goethe Universität  
+Klinik für Hals-Nasen-Ohrenheilkunde  
+Audiologische Akustik, Prof. Dr.-Ing. Uwe Baumann  
+Theodor-Stern-Kai 7, 60590 Frankfurt am Main  
 
 ---
 
-## Update 2008-07-04
+## Changelog
+### Update 2008-07-04
 
 For a graphical user interface: with the compiler toolbox from Matlab we made a standalone exe-file provided in the `distrib` subfolder in the ModelDB (expanded) archive but you have to install a "MCR-installer" (free) which I also provide on my homepage (sorry it is in German):
 [http://home.arcor.de/a.bahmer/software.html](http://home.arcor.de/a.bahmer/software.html)
 *Installationsprogramm für neue compilierte Matlabprogramme ab R2007a (EXE-File)*
 
----
-
-2025-05-27 – Standardized to Markdown.
+### Standardized to Markdown 2025-05-27
